@@ -16,32 +16,27 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        // TODO: This method is called when the BroadcastReceiver is receiving
-        // an Intent broadcast.
-//        throw new UnsupportedOperationException("Not yet implemented");
+        // TODO: This method is called when the BroadcastReceiver is receiving an Intent broadcast.
 
-//        if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
+        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-            NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent contentIntent = new Intent(context, MainActivity.class);
 
-            Intent contentIntent = new Intent(context, MainActivity.class);
+        final PendingIntent contentPendingIntent = PendingIntent.getActivity
+                (context, NOTIFICATION_ID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-            final PendingIntent contentPendingIntent = PendingIntent.getActivity
-                    (context, NOTIFICATION_ID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        String pesan = intent.getExtras().getString("pesan");
 
-            String pesan = intent.getExtras().getString("pesan");
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentTitle(context.getString(R.string.notification_title))
+                .setContentText(pesan)
+                .setContentIntent(contentPendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setAutoCancel(true)
+                .setDefaults(NotificationCompat.DEFAULT_ALL);
 
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                    .setSmallIcon(R.mipmap.ic_launcher_round)
-                    .setContentTitle(context.getString(R.string.notification_title))
-                    .setContentText(pesan)//context.getString(R.string.notification_text))
-                    .setContentIntent(contentPendingIntent)
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
-                    .setAutoCancel(true)
-                    .setDefaults(NotificationCompat.DEFAULT_ALL);
-
-            mNotificationManager.notify((int) System.currentTimeMillis(), builder.build());
-//        }
+        mNotificationManager.notify((int) System.currentTimeMillis(), builder.build());
     }
 }
 
