@@ -8,6 +8,7 @@
     android:padding="8dp"
     tools:context="io.github.ardhiesta.contohreminder.MainActivity">
 
+    <!-- TextView untuk menampilkan tanggal yang dipilih user -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,6 +18,7 @@
         android:layout_alignBottom="@+id/btnDate"
         android:layout_alignParentTop="true" />
 
+    <!-- Button untuk menampilkan date picker dialog -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,6 +28,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/btnDate" />
 
+    <!-- TextView untuk menampilkan waktu yang dipilih user -->
     <TextView
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
@@ -38,6 +41,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <!-- Button untuk menampilkan time picker dialog -->
     <Button
         android:id="@+id/btnTime"
         android:layout_width="wrap_content"
@@ -48,6 +52,7 @@
         android:layout_alignLeft="@+id/btnDate"
         android:layout_alignStart="@+id/btnDate" />
 
+    <!-- EditText untuk memasukkan pesan yang akan tampil di notifikasi -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,6 +63,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/etReminder" />
 
+    <!-- Button untuk menjadwalkan notifikasi -->
     <Button
         android:layout_marginTop="11dp"
         android:layout_width="match_parent"
