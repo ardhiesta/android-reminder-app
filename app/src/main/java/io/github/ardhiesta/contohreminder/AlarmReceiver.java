@@ -25,8 +25,10 @@ public class AlarmReceiver extends BroadcastReceiver {
         final PendingIntent contentPendingIntent = PendingIntent.getActivity
                 (context, NOTIFICATION_ID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        // megambil pesan yang diketik user di EditText pada MainActivity
         String pesan = intent.getExtras().getString("pesan");
 
+        // membuat notifikasi
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle(context.getString(R.string.notification_title))
@@ -36,6 +38,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL);
 
+        // menampilkan notifikasi
         mNotificationManager.notify((int) System.currentTimeMillis(), builder.build());
     }
 }
